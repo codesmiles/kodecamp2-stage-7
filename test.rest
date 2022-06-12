@@ -1,0 +1,8 @@
+get   HTTP://localhost:3000/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhYkBnYWlsLmNvbSIsImlhdCI6MTY1NDg3NzAzMX0.gTQtYs3HqMrsP1vi3Xx8EmKbg8PmC6-UK05L3ZtY0T8
+
+{
+    "email":"dab@gail.com",
+    "password":"sjA1@3bcasss"
+}
