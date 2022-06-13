@@ -1,6 +1,6 @@
-const validator = require("validator");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+// const validator = require("validator");
+// const bcrypt = require("bcrypt");
+// const jwt = require("jsonwebtoken");
 
 module.exports.location_create_post =  (req, res) => {}
 
