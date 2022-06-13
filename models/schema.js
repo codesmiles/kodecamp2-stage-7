@@ -16,7 +16,7 @@ const locationDataSchema = new Schema({
       required:true
   },
   coordinates:{
-      type:Array,
+      type:Number,
       required:true
   }
 });
