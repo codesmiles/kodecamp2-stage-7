@@ -1,8 +1,27 @@
-// const mongoose = require("mongoose");
-// const { Schema } = mongoose;
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
+
+const locationDataSchema = new Schema({
+  location_name: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  website: { type: String },
+  phone: {
+      type:Number,
+      required:true
+  },
+  coordinates:{
+      type:Array,
+      required:true
+  }
+});
 
 
 
-
-// const MongooseModel = mongoose.model("u", mongooseSchema);
-// module.exports = MongooseModel;
+const MongooseModel = mongoose.model("location", locationDataSchema);
+module.exports = MongooseModel;

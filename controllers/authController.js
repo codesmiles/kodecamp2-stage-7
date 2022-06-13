@@ -1,6 +1,7 @@
 // const validator = require("validator");
 // const bcrypt = require("bcrypt");
 // const jwt = require("jsonwebtoken");
+const schema = require("../models/schema");
 
 module.exports.location_create_post =  (req, res) => {}
 
