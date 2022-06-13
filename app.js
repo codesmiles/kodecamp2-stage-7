@@ -8,16 +8,16 @@ app.use(`/`, authRoutes);
 
 
 
-// //IMPORT MONGOOSE-----------------------------------------------------------------
-// const mongoose = require("mongoose"); //import mongoose
-// const url = `mongodb://localhost:27017/userAuth`;
-// // connect to mongoose
-// mongoose.connect(url, function (err) { 
-//   if (err) { console.log(err); }
-//   console.log(`Connected to MongoDB`);
-// });
+//IMPORT MONGOOSE----------------------------------------------------
+const mongoose = require("mongoose"); //import mongoose
+const url = `mongodb://localhost:27017/userAuth`;
+// connect to mongoose
+mongoose.connect(url, function (err) { 
+  if (err) { console.log(err); }
+  console.log(`Connected to MongoDB`);
+});
 
-// // -----------------------------------------------------------------
+// -----------------------------------------------------------------
 
 
 app.listen(3000, () => {
