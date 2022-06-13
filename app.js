@@ -1,3 +1,5 @@
+// jshint esversion: 6
+
 const express = require('express');
 const app = express();
 const authRoutes = require(`./routes/authRoute`);
@@ -16,7 +18,6 @@ mongoose.connect(url, function (err) {
   if (err) { console.log(err); }
   console.log(`Connected to MongoDB`);
 });
-
 // -----------------------------------------------------------------
 
 
