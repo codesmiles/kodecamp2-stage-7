@@ -3,7 +3,7 @@ const router = Router()
 const authFunc = require("../controllers/authController")
 
 
-router.post(`/postLocation`,authFunc.location_create_post)
+router.post(`/register-location-data`,authFunc.location_create_post)
 // router.put(`/edit_Location`, authFunc.location_edit_put)
 // router.delete(`/delete_Location`, authFunc.location_delete)
 // router.get(`/get_One_Location`, authFunc.location_getOne_get)

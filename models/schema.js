@@ -12,13 +12,17 @@ const locationDataSchema = new Schema({
   },
   website: { type: String },
   phone: {
+      type:String,
+      required:true
+  },
+  longitude:{
       type:Number,
       required:true
   },
-  // coordinates:{
-  //     type:Number,
-  //     required:true
-  // }
+  latitude:{
+    type:Number,
+    required:true
+}
 });
 
 
