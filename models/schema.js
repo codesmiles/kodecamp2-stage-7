@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const locationDataSchema = new Schema({
-  location_name: {
+  locationName: {
     type: String,
     required: true,
   },
@@ -15,10 +15,10 @@ const locationDataSchema = new Schema({
       type:Number,
       required:true
   },
-  coordinates:{
-      type:Number,
-      required:true
-  }
+  // coordinates:{
+  //     type:Number,
+  //     required:true
+  // }
 });
 
 

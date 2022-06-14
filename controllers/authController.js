@@ -1,6 +1,3 @@
-// const validator = require("validator");
-// const bcrypt = require("bcrypt");
-// const jwt = require("jsonwebtoken");
 const Schema = require("../models/schema");
 
 // TO RETURN ERROR
@@ -11,15 +8,18 @@ const handleErr = (err) => {
   };
 
 
-module.exports.location_create_post = async (req, res) => {
-  let { location_name, description, website, phone, coordinates } = req.body;
+module.exports.location_create_post = (req, res) => {
+  
+  let { locationName, description, website, phone } = req.body;
+
+  // console.log(locationName, description, website, phone)
+  
 
   const insertData = new Schema({
-    location_name,  
+    locationName,  
     description,
     website,
-    phone,
-    coordinates
+    phone
   })
   insertData.save((err,newData) =>{
       handleErr(err);
