@@ -1,33 +1,45 @@
-const Schema = require("../models/schema");
+const MongooseModel = require("../models/schema");
+const options = require(`../locationAPI`);
+const axios = require("axios");
 
 // TO RETURN ERROR
 const handleErr = (err) => {
-    if (err) {
-      console.log(err);
-    }
-  };
-
+  if (err) {
+    console.log(err);
+  }
+};
 
 module.exports.location_create_post = (req, res) => {
-  
+  // USE AXIOS TO IMPORT AN EXTERNAL API-------------------------------
+
+  axios
+    .request(options)
+    .then(function (response) {
+      console.log(response.data["country"]);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+  // ------------------------------------------------------------------
+return 0;
+
   let { locationName, description, website, phone } = req.body;
 
   // console.log(locationName, description, website, phone)
-  
 
-  const insertData = new Schema({
-    locationName,  
+  const insertData = new MongooseModel({
+    locationName,
     description,
     website,
-    phone
-  })
-  insertData.save((err,newData) =>{
-      handleErr(err);
-      res.json({
-          successful:true,
-          newData
-      })
-  })
+    phone,
+  });
+  insertData.save((err, newData) => {
+    handleErr(err);
+    res.json({
+      successful: true,
+      newData,
+    });
+  });
 };
 
 module.exports.location_edit_put = async (req, res) => {};

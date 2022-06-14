@@ -1,9 +1,9 @@
 POST HTTP://localhost:3000/postLocation
-Content-Type: application/json
+# Content-Type: application/json
 
-{
-   "locationName":"lagos",  
-    "description":"southwest corner",
-    "website":"www.lagos.com",
-    "phone":4
-}
+# {
+#    "locationName":"lagos",  
+#     "description":"southwest corner",
+#     "website":"www.lagos.com",
+#     "phone":4
+# }
