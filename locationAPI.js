@@ -8,4 +8,18 @@ const options = {
     }
   };
   
+
+  
+// const summonAxios = () => {
+//   axios
+//     .request(options)
+//     .then(function (response) {
+//       console.log(response.data.country);
+//     })
+//     .catch(function (error) {
+//       console.error(error);
+//     });
+// };
+// summonAxios();
+
 module.exports = options;

@@ -1,11 +1,15 @@
-POST HTTP://localhost:3000/register-location-data
+GET http://localhost:3000/get_all_locations
 Content-Type: application/json
 
 {
-    "name":"Michael",
-    "email":"mike@gmail.com",
-   "location":"lagos",  
-    "location_description":"southwest corner",
-    "website":"www.lagos.com",
-    "phone":8136798911
+   "email":"smiles@gmail.com"
 }
+
+# {
+#     "name":"loud",
+#     "email":"loud@gmail.com",
+#    "location":"lagos",  
+#     "location_description":"southwest corner",
+#     "website":"www.lagos.com",
+#     "phone":8136798911
+# }
