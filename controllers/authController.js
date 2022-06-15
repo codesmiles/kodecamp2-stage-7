@@ -1,8 +1,8 @@
 const MongooseModel = require("../models/schema");
 const options = require(`../locationAPI`);
 const axios = require("axios");
-const _ = require("lodash");
-const { json } = require("stream/consumers");
+const validator = require("validator")
+
 
 // TO RETURN ERROR
 const handleErr = (err) => {
@@ -11,19 +11,14 @@ const handleErr = (err) => {
   }
 };
 
-// CALCULATE DISTANCE
-const calcDist = (x1, x2, y1, y2) => {
-  let y = x2 - x1;
-  let x = y2 - y1;
-  const total = Math.sqrt(x * x + y * y);
-  return total;
-};
+
 
 // REGISTER LOCATION CREATE DATA
-
 module.exports.location_create_post = async (req, res) => {
   let { name, email, location_description, website, phone } = req.body; //requested data
-  // USE AXIOS TO IMPORT AN EXTERNAL API-------------------------------
+
+  if(validator.isEmail(email)){
+// USE AXIOS TO IMPORT AN EXTERNAL API-------------------------------
   // imported from locationapi.js
   axios.request(options).then((response) => {
     const insertData = new MongooseModel({
@@ -47,13 +42,20 @@ module.exports.location_create_post = async (req, res) => {
   });
 
   // ------------------------------------------------------------------
+  }else{
+    res.json({
+      successful:false,
+      message:`Plseas insert a valid email`,
+      statusCode:400
+    })
+  }
 };
 
 // EDIT LOCATION PUT REQUEST
 module.exports.location_edit_put = async (req, res) => {
-  const { email, any} = req.body;
+  const { email } = req.body;
 
-  const updateData = await MongooseModel.findOneAndUpdate({email},{any});
+  const updateData = await MongooseModel.findOneAndUpdate({ email }, { any });
 };
 
 // DELETE LOCATION REQUEST
@@ -61,6 +63,7 @@ module.exports.location_delete = async (req, res) => {
   const { email } = req.body;
 
   const deleteOneData = await MongooseModel.findOneAndDelete({ email });
+  
   res.json({
     succesful: true,
     message: `Profile deleted`,
@@ -100,14 +103,23 @@ module.exports.location_calcLocation_post = async (req, res) => {
   const { email } = req.body;
   const dataLog = await MongooseModel.findOne({ email });
 
+  // CALCULATE DISTANCE-------------------------------------------
+const calcDist = (x1, x2, y1, y2) => {
+  let y = x2 - x1;
+  let x = y2 - y1;
+  const total = Math.sqrt(x * x + y * y);
+  const R = 6371; //km
+  const totalDistance = Math.round(total * R);
+  return `The total distance between you and ${dataLog.name} is ${totalDistance}km`;
+};
+// -----------------------------------------------------------------
   axios
     .request(options)
     .then((response) => {
-
       const userLongitude = response.data["longitude"];
       const userLatitude = response.data["latitude"];
-      const dataLogLongitude = datalog.longitude;
-      const dataLogLatitude = datalog.latitude;
+      const dataLogLongitude = dataLog.longitude;
+      const dataLogLatitude = dataLog.latitude;
 
       res.json({
         successful: true,

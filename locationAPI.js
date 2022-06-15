@@ -1,3 +1,4 @@
+
 const options = {
     method: 'GET',
     url: 'https://find-any-ip-address-or-domain-location-world-wide.p.rapidapi.com/iplocation',
@@ -14,7 +15,7 @@ const options = {
 //   axios
 //     .request(options)
 //     .then(function (response) {
-//       console.log(response.data.country);
+//       console.log(response.data);
 //     })
 //     .catch(function (error) {
 //       console.error(error);
