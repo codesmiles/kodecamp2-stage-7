@@ -10,15 +10,25 @@ const handleErr = (err) => {
   }
 };
 
+// CALCULATE DISTANCE
+const calcDist = (x1, x2, y1, y2) => {
+  let y = x2 - x1;
+  let x = y2 - y1;
+  const total = Math.sqrt(x * x + y * y);
+  return total;
+};
+
+// CREATE DATA
 module.exports.location_create_post = async (req, res) => {
-  let { locationName, description, website, phone } = req.body; //requested data
+  let { name, email, locationName, description, website, phone } = req.body; //requested data
   // USE AXIOS TO IMPORT AN EXTERNAL API-------------------------------
   // imported from locationapi.js
-
   axios
     .request(options)
     .then((response) => {
       const insertData = new MongooseModel({
+        name,
+        email,
         locationName,
         description,
         website,
@@ -40,15 +50,14 @@ module.exports.location_create_post = async (req, res) => {
 
 // PUT REQUEST
 module.exports.location_edit_put = async (req, res) => {
-  const {locationName } = req.body;
+  const { locationName } = req.body;
 
-  const updateData = await MongooseModel.findOneAndUpdate()
+  const updateData = await MongooseModel.findOneAndUpdate();
 };
 
 // DELETE REQUEST
 module.exports.location_delete = async (req, res) => {
-
-  const deleteData = await MongooseModel.findOneAndDelete({ id: id })
+  const deleteData = await MongooseModel.findOneAndDelete({ id: id });
 };
 
 module.exports.location_getOne_get = async (req, res) => {
@@ -62,17 +71,14 @@ module.exports.location_getAll_get = async (req, res) => {
 module.exports.location_calcLocation_get = async (req, res) => {};
 
 module.exports.location_calcLocation_post = (req, res) => {
-  const {dataentry} = req.body
+  const { email } = req.body;
   axios
-  .request(options)
-  .then((response) => {
-    // console.log(response.data);
-    
-    const c = Math.sqrt(a*a + b*b);
-    
-  
-})
-.catch(handleErr(err));
+    .request(options)
+    .then((response) => {
+      // console.log(response.data);
+    })
+    .catch(handleErr(err));
+
 
 
 };

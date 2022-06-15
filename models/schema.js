@@ -1,10 +1,19 @@
 const mongoose = require("mongoose");
+const { type } = require("os");
 const { Schema } = mongoose;
 
 const locationDataSchema = new Schema({
+  name:{
+    type:String,
+    required:true
+  },
+  email:{
+    type:String,
+    required:true
+  },
   locationName: {
     type: String,
-    required: true,
+    required: true
   },
   description: {
     type: String,

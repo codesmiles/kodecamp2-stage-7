@@ -2,8 +2,10 @@ POST HTTP://localhost:3000/register-location-data
 Content-Type: application/json
 
 {
+    "name":"Michael",
+    "email":"mike@gmail.com",
    "locationName":"lagos",  
     "description":"southwest corner",
     "website":"www.lagos.com",
-    "phone":23
+    "phone":8136798911
 }
