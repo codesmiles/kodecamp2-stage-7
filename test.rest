@@ -4,8 +4,8 @@ Content-Type: application/json
 {
     "name":"Michael",
     "email":"mike@gmail.com",
-   "locationName":"lagos",  
-    "description":"southwest corner",
+   "location":"lagos",  
+    "location_description":"southwest corner",
     "website":"www.lagos.com",
     "phone":8136798911
 }

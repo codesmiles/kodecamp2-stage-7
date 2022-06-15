@@ -11,11 +11,11 @@ const locationDataSchema = new Schema({
     type:String,
     required:true
   },
-  locationName: {
+  location: {
     type: String,
     required: true
   },
-  description: {
+  location_description: {
     type: String,
     required: true,
   },

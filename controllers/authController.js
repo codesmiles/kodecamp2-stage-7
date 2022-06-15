@@ -18,9 +18,23 @@ const calcDist = (x1, x2, y1, y2) => {
   return total;
 };
 
+const summonAxios =()=>{
+  axios.request(options).then(function (response) {
+    // console.log(response.data["country"]);
+    // console.log(response.data["latitude"]);
+    // console.log(response.data["longitude"])
+    console.log(response.data);
+    
+  }).catch(function (error) {
+    console.error(error);
+  });
+}
+
+summonAxios();
+
 // CREATE DATA
 module.exports.location_create_post = async (req, res) => {
-  let { name, email, locationName, description, website, phone } = req.body; //requested data
+  let { name, email, location, location_description, website, phone } = req.body; //requested data
   // USE AXIOS TO IMPORT AN EXTERNAL API-------------------------------
   // imported from locationapi.js
   axios
@@ -29,8 +43,8 @@ module.exports.location_create_post = async (req, res) => {
       const insertData = new MongooseModel({
         name,
         email,
-        locationName,
-        description,
+        location,
+        Location_description,
         website,
         phone,
         longitude: response.data["longitude"], //data from the api
