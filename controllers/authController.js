@@ -53,14 +53,20 @@ module.exports.location_create_post = async (req, res) => {
 };
 
 // EDIT LOCATION PUT REQUEST
-module.exports.location_edit_put = async (req, res) => {
-const { email, name, location_description, website, phone } = req.body;
+module.exports.location_edit_patch = async (req, res) => {
+const { email, ...obj } = req.body;
+ 
   try {
+// ISSUE WITH THIS CODE
     const editLocation = await MongooseModel.findOneAndUpdate(
       { email },
-      { $set: { name, location_description, website, phone } },
+      {$set : obj },
       { new: true }
     );
+    // console.log(editLocation);
+
+      // return 0;
+
     if (editLocation) {
       res.json({
         successful: true,

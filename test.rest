@@ -1,15 +1,11 @@
-DELETE http://localhost:3000/delete-location
+patch http://localhost:3000/edit-location
 Content-Type: application/json
 
 {
-   "email":"loudmouth@gmail.com"
+    "email":"smiles@gmail.com"
 }
 
-# {
-#     "name":"loudmouth",
-#     "email":"loudmouth@gmail.com",
-#    "location":"lagos",  
-#     "location_description":"southwest corner",
-#     "website":"www.lagos.com",
-#     "phone":813679
-# }
+{
+    "location_description": "vawlence everywhere",
+    "website": "www.wahala.com"
+}
