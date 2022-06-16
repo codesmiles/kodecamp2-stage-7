@@ -58,7 +58,6 @@ module.exports.location_edit_patch = async (req, res) => {
   const email = req.params.email;
 
   try {
-    // ISSUE WITH THIS CODE
     const editLocation = await MongooseModel.findOneAndUpdate(
       { email },
       { obj },
