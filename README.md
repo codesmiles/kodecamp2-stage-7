@@ -1,6 +1,5 @@
-# RESTful API TO LOCATIONS
+# A RESTFUL API TO CALCULATE DISTANCE BETWEEN TWO LOCATIONS AND PERFORM CRUD PROCESSES
 
-## Design of a RESTful API that collects users location information and calculates the distance between the locations
 
 ## NOTE
 
