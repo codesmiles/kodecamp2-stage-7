@@ -2,7 +2,6 @@ const MongooseModel = require("../models/schema");
 const options = require(`../locationAPI`);
 const axios = require("axios");
 const validator = require("validator");
-const { send } = require("process");
 
 // TO RETURN ERROR
 const handleErr = (err) => {
@@ -72,6 +71,8 @@ module.exports.location_delete = async (req, res) => {
       message: `Profile deleted`,
       statusCode: 202,
     });
+  
+  
   } catch (err) {
     handleErr(err);
   }
@@ -89,6 +90,8 @@ module.exports.location_getOne_get = async (req, res) => {
       message: getOneLocation,
       statusCode: 200,
     });
+
+    
   } catch (err) {
     handleErr(err);
   }
