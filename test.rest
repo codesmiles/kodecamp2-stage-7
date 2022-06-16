@@ -1,15 +1,15 @@
-post http://localhost:3000/add-location
+DELETE http://localhost:3000/delete-location
 Content-Type: application/json
 
-# {
-#    "email":"loudmouth@gmail.com"
-# }
-
 {
-    "name":"loudmouth",
-    "email":"loudmouth@gmail.com",
-   "location":"lagos",  
-    "location_description":"southwest corner",
-    "website":"www.lagos.com",
-    "phone":813679
+   "email":"loudmouth@gmail.com"
 }
+
+# {
+#     "name":"loudmouth",
+#     "email":"loudmouth@gmail.com",
+#    "location":"lagos",  
+#     "location_description":"southwest corner",
+#     "website":"www.lagos.com",
+#     "phone":813679
+# }

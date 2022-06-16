@@ -54,25 +54,57 @@ module.exports.location_create_post = async (req, res) => {
 
 // EDIT LOCATION PUT REQUEST
 module.exports.location_edit_put = async (req, res) => {
-  const { email } = req.body;
+const { email, name, location_description, website, phone } = req.body;
+  try {
+    const editLocation = await MongooseModel.findOneAndUpdate(
+      { email },
+      { $set: { name, location_description, website, phone } },
+      { new: true }
+    );
+    if (editLocation) {
+      res.json({
+        successful: true,
+        editLocation,
+        statusCode: 200,
+      });
+  } else {
+    res.json({
+      successful: false,
+      message: `${email} does not exist`,
+      statusCode: 400,
+    });
+  }
 
-  const updateData = await MongooseModel.findOneAndUpdate({ email }, { any });
+  } catch (err) {
+    handleErr(err);   
+  }
+    
+    
 };
-
 // DELETE LOCATION REQUEST
 module.exports.location_delete = async (req, res) => {
   try {
     const { email } = req.body;
 
-    const deleteOneData = await MongooseModel.findOneAndDelete({ email });
-
-    res.json({
-      succesful: true,
-      message: `Profile deleted`,
-      statusCode: 202,
-    });
-  
-  
+    // check if the data  exists in the database
+    const checkData = await MongooseModel.findOne({ email });
+    if (checkData) {
+      // delete the data
+      const deleteData = await MongooseModel.findOneAndDelete({ email });
+      res.json({
+        successful: true,
+        message: `${checkData.name} has been deleted`,
+        statusCode: 200,
+      });
+    }
+    // if the data does not exist in the database
+    else {
+      res.json({
+        successful: false,
+        message: `${email} does not exist`,
+        statusCode: 400,
+      });
+    }
   } catch (err) {
     handleErr(err);
   }
@@ -84,14 +116,19 @@ module.exports.location_getOne_get = async (req, res) => {
     const { email } = req.body;
 
     const getOneLocation = await MongooseModel.findOne({ email });
-
-    res.json({
-      successful: true,
-      message: getOneLocation,
-      statusCode: 200,
-    });
-
-    
+    if (getOneLocation) {
+      res.json({
+        successful: true,
+        message: getOneLocation,
+        statusCode: 200,
+      });
+    } else {
+      res.json({
+        successful: false,
+        message: `${email} does not exist`,
+        statusCode: 400,
+      });
+    }
   } catch (err) {
     handleErr(err);
   }
@@ -102,11 +139,19 @@ module.exports.location_getAll_get = async (req, res) => {
   try {
     const getAllLocation = await MongooseModel.find();
 
-    res.json({
-      succesful: true,
-      message: getAllLocation,
-      statusCode: 200,
-    });
+    if (getAllLocation) {
+      res.json({
+        successful: true,
+        message: getAllLocation,
+        statusCode: 200,
+      });
+    } else {
+      res.json({
+        successful: false,
+        message: `No data`,
+        statusCode: 400,
+      });
+    }
   } catch (err) {
     handleErr(err);
   }

@@ -10,6 +10,26 @@ const options = {
   };
   
 
+
+  // try {
+  //   const updateData = await MongooseModel.findOneAndUpdate(
+  //     { email },
+  //     { $set: req.body }
+  //   );
+  //   if (updateData) {
+  //     res.json({
+  //       successful: true,
+  //     });
+  //   } else {
+  //     res.json({
+  //       successful: false,
+  //       message: `No data found`,
+  //       statusCode: 404,
+  //     });
+  //   }
+  //   } catch (err) {
+  //     handleErr(err);
+  //   }
   
 // const summonAxios = () => {
 //   axios
