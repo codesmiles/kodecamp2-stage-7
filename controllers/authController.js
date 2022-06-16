@@ -10,7 +10,7 @@ const handleErr = (err) => {
   }
 };
 
-// REGISTER LOCATION CREATE DATA
+// ADD LOCATION CREATE DATA
 module.exports.location_create_post = async (req, res) => {
   try {
     let { name, email, location_description, website, phone } = req.body; //requested data
@@ -54,18 +54,16 @@ module.exports.location_create_post = async (req, res) => {
 
 // EDIT LOCATION PUT REQUEST
 module.exports.location_edit_patch = async (req, res) => {
-const { email, ...obj } = req.body;
- 
+  const { ...obj } = req.body;
+  const email = req.params.email;
+
   try {
-// ISSUE WITH THIS CODE
+    // ISSUE WITH THIS CODE
     const editLocation = await MongooseModel.findOneAndUpdate(
       { email },
-      {$set : obj },
+      { obj },
       { new: true }
     );
-    // console.log(editLocation);
-
-      // return 0;
 
     if (editLocation) {
       res.json({
@@ -73,19 +71,16 @@ const { email, ...obj } = req.body;
         editLocation,
         statusCode: 200,
       });
-  } else {
-    res.json({
-      successful: false,
-      message: `${email} does not exist`,
-      statusCode: 400,
-    });
-  }
-
+    } else {
+      res.json({
+        successful: false,
+        message: `${email} does not exist`,
+        statusCode: 400,
+      });
+    }
   } catch (err) {
-    handleErr(err);   
+    handleErr(err);
   }
-    
-    
 };
 // DELETE LOCATION REQUEST
 module.exports.location_delete = async (req, res) => {
@@ -185,8 +180,11 @@ module.exports.location_calcLocation_post = async (req, res) => {
     axios
       .request(options)
       .then((response) => {
+        // current User Location
         const userLongitude = response.data["longitude"];
         const userLatitude = response.data["latitude"];
+
+        // location of the user in db
         const dataLogLongitude = dataLog.longitude;
         const dataLogLatitude = dataLog.latitude;
 

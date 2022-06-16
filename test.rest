@@ -1,9 +1,5 @@
-patch http://localhost:3000/edit-location
+patch http://localhost:3000/smiles@gmail.com/edit-location
 Content-Type: application/json
-
-{
-    "email":"smiles@gmail.com"
-}
 
 {
     "location_description": "vawlence everywhere",
