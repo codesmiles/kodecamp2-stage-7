@@ -91,7 +91,7 @@ The algorithm used to calculate the distance between two locations
 ```sh
 {
     successful: true,
-    newData,
+    message:{},
     statusCode: 201,
 }
 ```
