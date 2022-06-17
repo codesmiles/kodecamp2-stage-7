@@ -1,4 +1,4 @@
-patch http://localhost:3000/smiles@gmail.com/edit-location
+patch http://localhost:3000/smiles@gmail.com/add-location
 Content-Type: application/json
 
 {

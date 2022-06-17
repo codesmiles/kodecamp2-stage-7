@@ -33,7 +33,7 @@ module.exports.location_create_post = async (req, res) => {
           handleErr(err);
           res.json({
             successful: true,
-            newData,
+            message: newData,
             statusCode: 201,
           });
         });
@@ -67,7 +67,7 @@ module.exports.location_edit_patch = async (req, res) => {
     if (editLocation) {
       res.json({
         successful: true,
-        editLocation,
+        message: editLocation,
         statusCode: 200,
       });
     } else {
@@ -173,7 +173,10 @@ module.exports.location_calcLocation_post = async (req, res) => {
       const total = Math.sqrt(x * x + y * y);
       const R = 6371; //km
       const totalDistance = Math.round(total * R);
-      return `The total distance between you and ${dataLog.name} is ${totalDistance}km`;
+      const ans = {
+        answer: `The total distance between you and ${dataLog.name} is ${totalDistance}km`,
+      };
+      return ans;
     };
     // -----------------------------------------------------------------
     axios
