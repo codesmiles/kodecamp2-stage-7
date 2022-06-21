@@ -2,7 +2,7 @@ const MongooseModel = require("../models/schema");
 // const options = require(`../locationAPI`);
 const axios = require("axios");
 const validator = require("validator");
-require("dotenv").config();
+
 
 // TO RETURN ERROR
 const handleErr = (err) => {
@@ -19,7 +19,7 @@ module.exports.location_create_post = async (req, res) => {
     if (validator.isEmail(email)) {
       // USE AXIOS TO IMPORT AN EXTERNAL API-------------------------------
       // imported from locationapi.js
-      axios.request(process.env.options).then((response) => {
+      axios.request(process.env.OPTIONS).then((response) => {
         const insertData = new MongooseModel({
           name,
           email,
@@ -181,7 +181,7 @@ module.exports.location_calcLocation_post = async (req, res) => {
     };
     // -----------------------------------------------------------------
     axios
-      .request(process.env.options)
+      .request(process.env.OPTIONS)
       .then((response) => {
         // current User Location
         const userLongitude = response.data["longitude"];

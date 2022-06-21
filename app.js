@@ -2,6 +2,7 @@
 const express = require('express');
 const authRoutes = require(`./routes/authRoute`);
 const app = express();
+require("dotenv").config();
 
 // middlewares
 app.use(express.json());
